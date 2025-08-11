@@ -48,7 +48,7 @@ export default function NoteForm({ onCloseModal }: NoteFormProps) {
 
   const handleSubmit = (
     values: NewNoteData,
-    actions: FormikHelpers<NewNoteData>
+    actions: FormikHelpers<NewNoteData>,
   ) => {
     mutate(values);
     actions.resetForm();
