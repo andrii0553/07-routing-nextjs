@@ -1,41 +1,22 @@
-/* "use client";
+import css from "./page.module.css";
 
-import { useState } from "react";
-import NoteList from "@/components/NoteList/NoteList";
-import { getNotes, Note } from "@/lib/api";
-
-const Notes = () => {
-  const [notes, setNotes] = useState<Note[]>([]);
-
-  const handleClick = async () => {
-    const response = await getNotes();
-    if (response?.notes) {
-      setNotes(response.notes);
-    }
-  };
-
+export default function Home() {
   return (
-    <section>
-      <h1>Notes List</h1>
-      <button onClick={handleClick}>Get my notes</button>
-      {notes.length > 0 && <NoteList notes={notes} />}
-    </section>
-  );
-};
-
-export default Notes; */
-
-import { fetchNotes } from "@/lib/api";
-import NotesClient from "./Notes.client";
-
-export default async function NotesPage() {
-  const page = 1;
-  const perPage = 12;
-  const search = "";
-
-  const data = await fetchNotes(page, perPage, search);
-
-  return (
-    <NotesClient initialData={data} initialPage={page} initialSearch={search} />
+    <main>
+      <div className={css.container}>
+        <h1 className={css.title}>Welcome to NoteHub</h1>
+        <p className={css.description}>
+          NoteHub is a simple and efficient application designed for managing
+          personal notes. It helps keep your thoughts organized and accessible
+          in one place, whether you are at home or on the go.
+        </p>
+        <p className={css.description}>
+          The app provides a clean interface for writing, editing, and browsing
+          notes. With support for keyword search and structured organization,
+          NoteHub offers a streamlined experience for anyone who values clarity
+          and productivity.
+        </p>
+      </div>
+    </main>
   );
 }
