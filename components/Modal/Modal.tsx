@@ -1,27 +1,18 @@
 "use client";
 
 import css from "./Modal.module.css";
-import { useRouter } from "next/navigation";
 
-// Типізація пропсів для компонента Modal
-interface ModalProps {
+type Props = {
   children: React.ReactNode;
-  noteId?: string; // Додаємо необов'язковий пропс для ідентифікатора нотатки
-}
+  onClose: () => void;
+};
 
-const Modal = ({ children, noteId }: ModalProps) => {
-  const router = useRouter();
-
-  // Функція для закриття модального вікна
-  const close = () => {
-    router.back(); // Використовуємо router.back() для повернення назад
-  };
-
+const Modal = ({ children, onClose }: Props) => {
   return (
-    <div className={css.backdrop} onClick={close}>
-      <div className={css.modal} onClick={(e) => e.stopPropagation()}>
+    <div className={css.backdrop}>
+      <div className={css.modal}>
         {children}
-        <button className={css.button} onClick={close}>
+        <button className={css.button} onClick={onClose}>
           Back
         </button>
       </div>
