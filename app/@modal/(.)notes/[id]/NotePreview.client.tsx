@@ -20,8 +20,9 @@ const NotePreview = () => {
 
   if (isLoading) return <p>Loading, please wait...</p>;
   if (error || !note) return <p>Something went wrong.</p>;
+
   return (
-    <Modal>
+    <Modal noteId={id}>
       <div className={css.container}>
         <div className={css.item}>
           <div className={css.header}>
